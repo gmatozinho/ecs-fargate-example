@@ -1,4 +1,5 @@
 AWSTemplateFormatVersion: 2010-09-09
+Transform: AWS::Serverless-2016-10-31
 Description: The CloudFormation template for the CodePipeline.
 
 Parameters:
@@ -6,20 +7,20 @@ Parameters:
     Type: String
     Default: dev
   GithubUserName:
-    Type: String
-    Default: <USERNAME>
+    Type: "AWS::SSM::Parameter::Value<String>"
+    Default: /config/global/github-username
   GithubRepo:
     Type: String
-    Default: Fargate-ECSCluster-Cloudformation
+    Default: ecs-fargate-example
   GithubBranch:
-    Type: String
-    Default: <BRANCH>
+    Type: "AWS::SSM::Parameter::Value<String>"
+    Default: /config/global/github-branch
   GithubOAuthToken:
-    Type: String
-    Default: <GITHUB ACCESS TOKEN>
+    Type: "AWS::SSM::Parameter::Value<String>"
+    Default: /config/global/github-token
   ContainerPort:
     Type: Number
-    Default: 8080
+    Default: 3000
 
 Resources:
 

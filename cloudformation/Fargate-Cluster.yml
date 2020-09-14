@@ -113,7 +113,7 @@ Resources:
             - ContainerPort: !Ref ContainerPort
               HostPort: !Ref ContainerPort
 
-  # Creat a security group for load balancer and open port 80 in bound from internet
+  # Creat a security group for load balancer and open port 3000 in bound from internet
   LoadBalancerSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
@@ -121,8 +121,8 @@ Resources:
       VpcId: !Ref VPC
       SecurityGroupIngress:
         - IpProtocol: tcp
-          FromPort: 80
-          ToPort: 80
+          FromPort: 3000
+          ToPort: 3000
           CidrIp: 0.0.0.0/0
 
   # Creat a security group for Containers and open in bound Container port from Load balancer security group to the Container 
@@ -151,12 +151,12 @@ Resources:
         - !Ref SubnetB
       Type: application
 
-  # Create a TargetGroup for HTTP port 80
+  # Create a TargetGroup for HTTP port 3000
   TargetGroup:
     Type: AWS::ElasticLoadBalancingV2::TargetGroup
     Properties:
       Name: !Join ['-', [!Ref Stage, !Ref 'AWS::AccountId', 'TargetGroup']]
-      Port: 80
+      Port: 3000
       Protocol: HTTP
       TargetType: ip
       VpcId: !Ref VPC
@@ -169,7 +169,7 @@ Resources:
         - TargetGroupArn: !Ref TargetGroup
           Type: forward
       LoadBalancerArn: !Ref LoadBalancer
-      Port: 80
+      Port: 3000
       Protocol: HTTP
 
   # Create an ECS Service and add created Cluster, TaskDefintion, Subnets, TargetGroup and SecurityGroup
