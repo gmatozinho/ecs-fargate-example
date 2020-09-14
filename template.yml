@@ -28,7 +28,7 @@ Resources:
   ECRRepository:
     Type: AWS::ECR::Repository
     Properties:
-      RepositoryName: !Join ['-', [!Ref Stage, !Ref 'AWS::AccountId', 'ecr-repository']]
+      RepositoryName: !Join ['-', [!Ref Stage, !Ref 'AWS::AccountId', 'ecr-example-repository']]
 
   # Create an S3 Bucket to store build artifacts
   S3Bucket:
