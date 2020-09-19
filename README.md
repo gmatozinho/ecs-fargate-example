@@ -1,7 +1,12 @@
 # ecs-fargate-example
 
-### Deploy CodePipeline:
+### About:
 
+Repository contains a aws infrastructure example using cloudformation.
+I use aws codepipeline+github for ci/cd. Infrasctruture as compose by fargate+ecs for run a microservice aplication using container.
+
+
+### Deploy CodePipeline:
 
 set -e
 
