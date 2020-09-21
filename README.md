@@ -3,7 +3,7 @@
 ## About:
 
 Repository contains a aws infrastructure example using cloudformation.
-I use aws codepipeline+github for ci/cd. Infrasctruture as compose by fargate+ecs for run a microservice aplication using container.
+I use aws codepipeline for ci/cd. Infrasctruture using fargate, ecs and ecr.
 
 ### Create s3 bucket:
 
